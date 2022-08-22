@@ -4,9 +4,6 @@ const app = express();
 
 const { generateOTP, verifyOTP } = require("./src/otp");
 
-const port = process.env.PORT || 3005;
-app.listen(port, () => console.warn(`Server running on localhost:${port}`));
-
 app.get("/generate", async (req, res) => {
   try {
     const result = await generateOTP(req.query.mobileNo);
@@ -29,3 +26,6 @@ app.get("/verify", async (req, res) => {
     res.json({ success: false });
   }
 });
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Server started on ${port}`));
