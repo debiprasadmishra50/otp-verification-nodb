@@ -32,8 +32,6 @@ OTP verification without using any database or cache
 - sha256 (Encryption algorithm)
 - otp-generator (To generate OTP)
 
-<a href="#table-of-contents" style="float: right; position: fixed; bottom: 10px; right: 10px;background-color: #EEEEEE;color: #333333;padding: 2px 6px 2px 6px;border: 1px solid #000;text-decoration: none;font: 1rem Arial;">UP</a>
-
 ## Setup
 
 1. Clone this repository.
