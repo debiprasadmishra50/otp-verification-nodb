@@ -6,12 +6,16 @@ const secret = "hello@123!";
 
 const generateValidNumber = (phone) => `880${/(\d){10}$/.exec(phone)[0]}`;
 
+// generate a sha256 hash of the data
+const generateHash = (hashAlgorithm, secret, data) =>
+  crypto.createHmac(hashAlgorithm, secret).update(JSON.stringify(data)).digest("hex");
+
 const generateOTP = async (phone) => {
   const phoneNo = generateValidNumber(phone);
 
   const otp = otpGenerator.generate(6, { upperCase: false, specialChars: false });
   const data = { phoneNo, otp };
-  const hash = crypto.createHmac(hashAlgorithm, secret).update(JSON.stringify(data)).digest("hex"); // creating SHA256 hash of the data
+  const hash = generateHash(hashAlgorithm, secret, data);
 
   return { otp, hash };
 };
@@ -22,7 +26,7 @@ const verifyOTP = async ({ mobileNo, otp, hash }) => {
   }
   const phoneNo = generateValidNumber(mobileNo);
   const data = { phoneNo, otp };
-  const newHash = crypto.createHmac(hashAlgorithm, secret).update(JSON.stringify(data)).digest("hex");
+  const newHash = generateHash(hashAlgorithm, secret, data);
 
   let isValid = false;
   if (newHash === hash) isValid = true;
