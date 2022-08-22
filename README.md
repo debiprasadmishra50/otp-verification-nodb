@@ -1,10 +1,10 @@
-# opt-verification
+# OTP-verification
 
 OTP verification without using any database or cache
 
 ## Table of Contents
 
-- [opt-verification](#opt-verification)
+- [OTP-verification](#otp-verification)
   - [Table of Contents](#table-of-contents)
   - [Key Features](#key-features)
   - [Flow Description](#flow-description)
